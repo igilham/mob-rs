@@ -1,6 +1,6 @@
 # Tool for remote mob programming
 
-This is a [Rust][rust] port of a simple tool called [`mob`][mob] which I found on [Remote Programming][remote]. I put it together as a simple exercise for learning some aspects of the Rust language.
+This is a [Rust][rust] port of a simple tool called [`mob`][mob] which I found on [Remote Mob Programming][remote]. I put it together as a simple exercise for learning some aspects of the Rust language.
 
 ## Installation
 
