@@ -21,16 +21,15 @@ fn unwrap_output(out: Output) -> Result<String, IOError> {
 }
 
 fn call(args: Vec<&str>) -> Result<Output, IOError> {
+    let cmd_args = format!("git {}", args.join(" "));
     if cfg!(target_os = "windows") {
         return Command::new("cmd")
             .arg("/C")
-            .arg("git")
-            .args(args)
+            .arg(cmd_args)
             .output();
     }
     return Command::new("sh")
         .arg("-c")
-        .arg("git")
-        .args(args)
+        .arg(cmd_args)
         .output();
 }
