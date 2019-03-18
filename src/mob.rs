@@ -1,5 +1,4 @@
 use clap::{ ArgMatches };
-use std::process::Output;
 use std::io::Error as IOError;
 use std::io::ErrorKind;
 use std::str;
@@ -37,23 +36,10 @@ pub fn done(_matches: &ArgMatches) -> Result<(), IOError> {
     Err(IOError::from(ErrorKind::Other))
 }
 
-fn unwrap_output(out: Output) -> Result<String, IOError> {
-    let out_str_result = str::from_utf8(&out.stdout);
-    return match out_str_result {
-        Ok(out_str) => {
-            Ok(String::from(out_str))
-        },
-        Err(err) => {
-            Err(IOError::new(ErrorKind::Other, err))
-        },
-    };
-}
-
 fn has_mobbing_branch() -> Result<bool, IOError> {
     let output = git(vec!("branch"))?;
-    let out_str = unwrap_output(output)?;
 
-	return if out_str.contains(&format!("  {}", MOBBING_BRANCH_NAME)) || out_str.contains(&format!("* {}", MOBBING_BRANCH_NAME)) {
+	return if output.contains(&format!("  {}", MOBBING_BRANCH_NAME)) || output.contains(&format!("* {}", MOBBING_BRANCH_NAME)) {
         Ok(true)
     } else {
         Ok(false)
@@ -62,9 +48,8 @@ fn has_mobbing_branch() -> Result<bool, IOError> {
 
 fn has_mobbing_branch_origin() -> Result<bool, IOError> {
     let output = git(vec!("branch", "--remotes"))?;
-    let out_str = unwrap_output(output)?;
 
-	return if out_str.contains(&format!("  origin/{}", MOBBING_BRANCH_NAME)) || out_str.contains(&format!("* origin/{}", MOBBING_BRANCH_NAME)) {
+	return if output.contains(&format!("  origin/{}", MOBBING_BRANCH_NAME)) || output.contains(&format!("* origin/{}", MOBBING_BRANCH_NAME)) {
         Ok(true)
     } else {
         Ok(false)
