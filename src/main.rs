@@ -71,7 +71,7 @@ fn main() {
     match result {
         Ok(_) => {},
         Err(err) => {
-            println!("{}", err);
+            eprintln!("{}", err);
         },
     }
 }

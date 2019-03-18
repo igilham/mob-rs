@@ -60,7 +60,7 @@ pub fn start(_matches: &ArgMatches) -> Result<(), IOError> {
 
 pub fn next(_matches: &ArgMatches) -> Result<(), IOError> {
     if !is_mobbing()? {
-		println!("You aren't mobbing");
+		eprintln!("You aren't mobbing");
 		return Err(IOError::from(ErrorKind::Other));
 	}
 
@@ -90,7 +90,7 @@ pub fn status(_matches: &ArgMatches) -> Result<(), IOError> {
 
 pub fn done(_matches: &ArgMatches) -> Result<(), IOError> {
     if !is_mobbing()? {
-		println!("You aren't mobbing");
+		eprintln!("You aren't mobbing");
 		return Ok(());
 	}
 
