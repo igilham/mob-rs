@@ -8,32 +8,32 @@ use mob::*;
 
 fn main() {
     let matches = clap_app!(mob =>
-        (version: "0.1")
+        (version: "1.0.0")
         (author: "Ian Gilham")
         (about: "Mob programming handover tool")
         (@subcommand reset =>
             (about: "Deletes branch `mob-session` and `origin/mob-session`")
-            (version: "0.1")
+            (version: "1.0.0")
             (author: "Ian Gilham")
         )
         (@subcommand start =>
             (about: "Creates branch `mob-session` and pulls from `origin/mob-session`")
-            (version: "0.1")
+            (version: "1.0.0")
             (author: "Ian Gilham")
         )
         (@subcommand next =>
             (about: "Pushes all changes to `origin/mob-session` in a WIP commit")
-            (version: "0.1")
+            (version: "1.0.0")
             (author: "Ian Gilham")
         )
         (@subcommand status =>
             (about: "Display the mob session status and WIP commits")
-            (version: "0.1")
+            (version: "1.0.0")
             (author: "Ian Gilham")
         )
         (@subcommand done =>
             (about: "Squashes all changes in `mob-session` into staging of `master` and removes `mob-session` and `origin/mob-session`")
-            (version: "0.1")
+            (version: "1.0.0")
             (author: "Ian Gilham")
         )
     ).get_matches();
