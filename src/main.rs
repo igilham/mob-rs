@@ -1,10 +1,8 @@
-#[macro_use]
-extern crate clap;
-
 mod git;
 mod mob;
 
 use mob::*;
+use clap::clap_app;
 
 fn main() {
     let matches = clap_app!(mob =>
